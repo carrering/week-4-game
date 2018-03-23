@@ -216,7 +216,7 @@ function checkGameState(){
             $(".opponent_row .buttonChewy").prop('disabled',false)
             $(".opponent_row .buttonVader").prop('disabled',false)
             if(game1.winCount === 1){
-
+                console.log("wincount is 1")
                 switch(game1.opponent){
                     case "Luke":
                     $(".defender_row .buttonChewy").hide()
@@ -244,6 +244,7 @@ function checkGameState(){
                 }  
                 console.log(game1.winCount)
                 game1.winCount++
+                console.log(game1.winCount)
             }
             else if(game1.winCount===2) {
                 console.log("checkmeout!")
@@ -306,6 +307,7 @@ $(".char_button").on("click", function(){
     
     var selectedChar = $(this).attr("value") 
     console.log("Button Clicked Value:",selectedChar)
+    console.log("current gameState: ", game1.gameState)
     if(game1.gameState===1){
         switch(selectedChar){
             case "character1":
