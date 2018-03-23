@@ -89,17 +89,17 @@ $(".result_text").append("<br>")
 $(".result_text").append(battleC.name + " attacked you back for " + battleC.cap + " damage.")
 
 if(battleP1.hp <= 0){
-
     console.log("Game Over - Player",battleP1.name)
-    $(".result_text").html("<h2>GAME OVER!</h2>")
+    $(".result_text").html("<h2>You Lost - GAME OVER!</h2>")
     $("#attack").hide()
     game1.lossCount = 1
     $("#reset").show()
-
-
 }
 
-
+if(battleC.hp <= 0){
+    game1.winCount++
+    checkGameState()
+}
     
     
 }
@@ -207,10 +207,75 @@ function checkGameState(){
                 $(".opponent_row .buttonVader").hide()
             }
             $("#attack").show()
-            game1.gameState=3 //gameState 3 player wins game over               
+            game1.gameState=3              
             break
 
-        
+            case 3://gameState 3 player wins against opponent  
+            $(".opponent_row .buttonLuke").prop('disabled',false)
+            $(".opponent_row .buttonKylo").prop('disabled',false)
+            $(".opponent_row .buttonChewy").prop('disabled',false)
+            $(".opponent_row .buttonVader").prop('disabled',false)
+            if(game1.winCount === 1){
+
+                switch(game1.opponent){
+                    case "Luke":
+                    $(".defender_row .buttonChewy").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").hide()
+                    $(".defender_row .buttonLuke").hide()
+                    break
+                    case "Chewy":
+                    $(".defender_row .buttonLuke").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").hide()
+                    $(".defender_row .buttonChewy").hide()
+                    break
+                    case "Kylo":
+                    $(".defender_row .buttonLuke").hide()
+                    $(".defender_row .buttonChewy").hide()
+                    $(".defender_row .buttonVader").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    break
+                    case "Vader":
+                    $(".defender_row .buttonLuke").hide()
+                    $(".defender_row .buttonChewy").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").hide()
+                }  
+                console.log(game1.winCount)
+                game1.winCount++
+            }
+            else if(game1.winCount===2) {
+                console.log("checkmeout!")
+                switch(game1.opponent){
+                    case "Luke":
+                    $(".defender_row .buttonChewy").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").hide()
+                    $(".defender_row .buttonLuke").show()
+                    break
+                    case "Chewy":
+                    $(".defender_row .buttonLuke").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").hide()
+                    $(".defender_row .buttonChewy").show()
+                    break
+                    case "Kylo":
+                    $(".defender_row .buttonLuke").hide()
+                    $(".defender_row .buttonChewy").hide()
+                    $(".defender_row .buttonVader").hide()
+                    $(".defender_row .buttonKylo").show()
+                    break
+                    case "Vader":
+                    $(".defender_row .buttonLuke").hide()
+                    $(".defender_row .buttonChewy").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").show()
+                }  
+            }
+            game1.winCount++
+            break
+
         }
 
 }
@@ -259,7 +324,7 @@ $(".char_button").on("click", function(){
         checkGameState()
         
     }
-    else if(game1.gameState===2){
+    else if(game1.gameState===2 || game1.gameState===3){
         switch(selectedChar){
             case "character1":
             game1.opponent = "Luke"
