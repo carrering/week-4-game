@@ -43,6 +43,7 @@ function Game(gameState, player1, opponent, isOver, winCount, lossCount){
 function battleMeBro(p1,c){
     var battleP1
     var battleC
+    var theAttackIGotInYo
    switch(p1){
         case "Luke":
             battleP1 = character1
@@ -58,27 +59,47 @@ function battleMeBro(p1,c){
    }
 
    switch(c){
-    case "Luke":
-        battleC = character1
-        break;
-    case "Chewy":
-        battleC = character2
-        break;          
-    case "Kylo":
-        battleC = character3
-        break;       
-    case "Vader":
-        battleC = character4 
+        case "Luke":
+            battleC = character1
+            break;
+        case "Chewy":
+            battleC = character2
+            break;          
+        case "Kylo":
+            battleC = character3
+            break;       
+        case "Vader":
+            battleC = character4 
 }
 
 
 // character1.hp = character1.hp - character2.cap
 battleP1.hp = battleP1.hp - battleC.cap
+battleC.hp = battleC.hp - battleP1.currentAttack
+theAttackIGotInYo = battleP1.currentAttack
+battleP1.currentAttack = battleP1.currentAttack + battleP1.ap
 console.log("name:",battleP1.name)
 console.log(" hp:",battleP1.hp)
+$(".hitpointsLuke").text(character1.hp)
+$(".hitpointsChewy").text(character2.hp)
+$(".hitpointsKylo").text(character3.hp)
+$(".hitpointsVader").text(character4.hp) 
+$(".result_text").html("You attacked "+ battleC.name + " for " + theAttackIGotInYo + " damage.")
+$(".result_text").append("<br>")
+$(".result_text").append(battleC.name + " attacked you back for " + battleC.cap + " damage.")
+
+if(battleP1.hp <= 0){
+
+    console.log("Game Over - Player",battleP1.name)
+    $(".result_text").html("<h2>GAME OVER!</h2>")
+    $("#attack").hide()
         //do something in the attack
         //take opponents hit points and reduced by player 1
         //take player 1 hit points and reduce by oponents attack points
+
+
+}
+
     
     
 }
@@ -108,12 +129,20 @@ function checkGameState(){
             game1.gameState=1 // only this state automtically exits
             break
 
-            case 1:// gameState 0 new game
+            case 1:// gameState 1 character assigned
             $(".all_character_row").hide()
-            $(".your_character_row").show()   
+            $(".your_character_row").show()
+            $(".your_character_row").prepend("<h2>Your Character</h2>")   
             $(".opponent_row").show()
+            $(".opponent_row").prepend("<h2>Choose An Opponnent<h2>")
             $(".defender_row").hide()
-            $(".buttonVader").hide()
+            switch(game1.player1){
+                case "Luke":
+                $(".buttonChewy").hide()
+                break
+
+            }
+            game1.gameState=2
             break
 
             case 2:// gameState 2 Opponent assigned
@@ -152,7 +181,7 @@ $(".counterattackKylo").text(character3.cap)
 $(".counterattackVader").text(character4.cap)    
 
 $(".char_button").on("click", function(){
-    checkGameState()
+    
     var selectedChar = $(this).attr("value") 
     console.log("Button Clicked Value:",selectedChar)
     if(game1.gameState===1){
@@ -170,7 +199,8 @@ $(".char_button").on("click", function(){
             game1.player1 = "Vader"
             break
         }
-        game1.gameState=2
+        checkGameState()
+        
     }
     else if(game1.gameState===2){
         switch(selectedChar){
