@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>James Chambers - Homework 4 - Star Wars RPG - JQuery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" mdia="screen" href="assets/css/style.css" />
+ 
+</head>
+<body>
+
+<!-- Title Row     -->
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+            <div id="title">Star Wars RPG</div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 divider_row"></div>
+</div>
+
+<!-- Character Picker Row -->
+<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 all_character_row">
+            <div class="choosePlayerTitle"><h2>Choose Your Player</h2></div>
+             <!-- Characters to choose from -->
+             <button class='char_button buttonLuke' value='character1'>
+                <div class='card'>
+                    <div class='card_image'>
+                    <img src="assets/images/luke.png" alt="Luke" class='character_imageLuke'>
+                    </div>
+                    <div class='card_content'>
+                            <div class="cardAttribute">Name:&nbsp;</div><div class='nameLuke'>Name</div>
+                            <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsLuke'>1</div>
+                            <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerLuke'>1</div>
+                            <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackLuke'>1</div>
+                    </div>
+                </div>
+            </button>
+
+            <button class='char_button buttonChewy' value='character2'>
+                <div class='card'>
+                    <div class='card_image'>
+                    <img src="assets/images/Chewy.png" alt="Chewy" class='character_imageChewy'>
+                    </div>
+                    <div class='card_content'>
+                            <div class="cardAttribute">Name:&nbsp;</div><div class='nameChewy'>Name</div>
+                            <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsChewy'>1</div>
+                            <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerChewy'>1</div>
+                            <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackChewy'>1</div>
+                    </div>
+                </div>
+            </button>
+
+            <button class='char_button buttonKylo' value='character3'>
+                <div class='card'>
+                    <div class='card_image'>
+                    <img src="assets/images/kyloren.png" alt="Kylo" class='character_imageKylo'>
+                    </div>
+                    <div class='card_content'>
+                            <div class="cardAttribute">Name:&nbsp;</div><div class='nameKylo'>Name</div>
+                            <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsKylo'>1</div>
+                            <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerKylo'>1</div>
+                            <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackKylo'>1</div>
+                    </div>
+                </div>
+            </button>
+
+            <button class='char_button buttonVader' value='character4'>
+                <div class='card'>
+                    <div class='card_image'>
+                    <img src="assets/images/Vader.png" alt="Vader" class='character_imageVader'>
+                    </div>
+                    <div class='card_content'>
+                            <div class="cardAttribute">Name:&nbsp;</div><div class='nameVader'>Name</div>
+                            <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsVader'>1</div>
+                            <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerVader'>1</div>
+                            <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackVader'>1</div>
+                    </div>
+                </div>
+            </button>
+
+
+        </div>
+        <div class="col-md-2"></div> 
+</div>
+
+<div class="row">
+        <div class="col-md-12 divider_row"></div>
+    </div>
+
+<!-- Character Chosen Row -->
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 your_character_row">        
+            <button class='char_button buttonLuke' value='character1'>
+                    <div class='card'>
+                        <div class='card_image'>
+                        <img src="assets/images/luke.png" alt="Luke" class='character_imageLuke'>
+                        </div>
+                        <div class='card_content'>
+                                <div class="cardAttribute">Name:&nbsp;</div><div class='nameLuke'>Name</div>
+                                <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsLuke'>1</div>
+                                <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerLuke'>1</div>
+                                <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackLuke'>1</div>
+                            </div>
+                    </div>
+                </button>
+    
+                <button class='char_button buttonChewy' value='character2'>
+                    <div class='card'>
+                        <div class='card_image'>
+                        <img src="assets/images/Chewy.png" alt="Chewy" class='character_imageChewy'>
+                        </div>
+                        <div class='card_content'>
+                                <div class="cardAttribute">Name:&nbsp;</div><div class='nameChewy'>Name</div>
+                                <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsChewy'>1</div>
+                                <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerChewy'>1</div>
+                                <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackChewy'>1</div>
+                           </div>
+                    </div>
+                </button>
+    
+                <button class='char_button buttonKylo' value='character3'>
+                    <div class='card'>
+                        <div class='card_image'>
+                        <img src="assets/images/kyloren.png" alt="Kylo" class='character_imageKylo'>
+                        </div>
+                        <div class='card_content'>
+                                <div class="cardAttribute">Name:&nbsp;</div><div class='nameKylo'>Name</div>
+                                <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsKylo'>1</div>
+                                <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerKylo'>1</div>
+                                <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackKylo'>1</div>
+    
+                        </div>
+                    </div>
+                </button>
+    
+                <button class='char_button buttonVader' value='character4'>
+                    <div class='card'>
+                        <div class='card_image'>
+                        <img src="assets/images/Vader.png" alt="Vader" class='character_imageVader'>
+                        </div>
+                        <div class='card_content'>
+                                <div class="cardAttribute">Name:&nbsp;</div><div class='nameVader'>Name</div>
+                                <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsVader'>1</div>
+                                <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerVader'>1</div>
+                                <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackVader'>1</div>
+                        </div>
+                    </div>
+                </button>        
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div class="row">
+        <div class="col-md-12 divider_row"></div>
+</div>
+
+<!-- Opponent To Attack Row -->
+<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 opponent_row">
+                <button class='char_button buttonLuke' value='character1'>
+                        <div class='card'>
+                            <div class='card_image'>
+                            <img src="assets/images/luke.png" alt="Luke" class='character_imageLuke'>
+                            </div>
+                            <div class='card_content'>
+                                    <div class="cardAttribute">Name:&nbsp;</div><div class='nameLuke'>Name</div>
+                                    <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsLuke'>1</div>
+                                    <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerLuke'>1</div>
+                                    <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackLuke'>1</div>
+                            </div>
+                        </div>
+                    </button>
+        
+                    <button class='char_button buttonChewy' value='character2'>
+                        <div class='card'>
+                            <div class='card_image'>
+                            <img src="assets/images/Chewy.png" alt="Chewy" class='character_imageChewy'>
+                            </div>
+                            <div class='card_content'>
+                                    <div class="cardAttribute">Name:&nbsp;</div><div class='nameChewy'>Name</div>
+                                    <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsChewy'>1</div>
+                                    <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerChewy'>1</div>
+                                    <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackChewy'>1</div>
+                                    </div>
+                        </div>
+                    </button>
+        
+                    <button class='char_button buttonKylo' value='character3'>
+                        <div class='card'>
+                            <div class='card_image'>
+                            <img src="assets/images/kyloren.png" alt="Kylo" class='character_imageKylo'>
+                            </div>
+                            <div class='card_content'>
+                                    <div class="cardAttribute">Name:&nbsp;</div><div class='nameKylo'>Name</div>
+                                    <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsKylo'>1</div>
+                                    <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerKylo'>1</div>
+                                    <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackKylo'>1</div>
+                            </div>
+                        </div>
+                    </button>
+        
+                    <button class='char_button buttonVader' value='character4'>
+                        <div class='card'>
+                            <div class='card_image'>
+                            <img src="assets/images/Vader.png" alt="Vader" class='character_imageVader'>
+                            </div>
+                            <div class='card_content'>
+                                    <div class="cardAttribute">Name:&nbsp;</div><div class='nameVader'>Name</div>
+                                    <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsVader'>1</div>
+                                    <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerVader'>1</div>
+                                    <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackVader'>1</div>
+                            </div>
+                        </div>
+                    </button>
+        </div>
+        <div class="col-md-2"></div>
+</div>
+
+
+
+<!-- Fight Action Section -->
+<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <button id="attack" value="Attack">Attack</button>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+<!-- Defender Row -->
+<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 defender_row">
+                <button class='char_button buttonLuke'>
+                        <div class='card'>
+                            <div class='card_image'>
+                            <img src="assets/images/luke.png" alt="Luke" class='character_imageLuke'>
+                            </div>
+                            <div class='card_content'>
+                                    <div class="cardAttribute">Name:&nbsp;</div><div class='nameLuke'>Name</div>
+                                    <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsLuke'>1</div>
+                                    <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerLuke'>1</div>
+                                    <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackLuke'>1</div>
+        
+                            </div>
+                        </div>
+                    </button>
+        
+                    <button class='char_button buttonChewy'>
+                        <div class='card'>
+                            <div class='card_image'>
+                            <img src="assets/images/Chewy.png" alt="Chewy" class='character_imageChewy'>
+                            </div>
+                            <div class='card_content'>
+                                    <div class="cardAttribute">Name:&nbsp;</div><div class='nameChewy'>Name</div>
+                                    <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsChewy'>1</div>
+                                    <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerChewy'>1</div>
+                                    <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackChewy'>1</div>
+                            </div>
+                        </div>
+                    </button>
+        
+                    <button class='char_button buttonKylo'>
+                        <div class='card'>
+                            <div class='card_image'>
+                            <img src="assets/images/kyloren.png" alt="Kylo" class='character_imageKylo'>
+                            </div>
+                            <div class='card_content'>
+                                    <div class="cardAttribute">Name:&nbsp;</div><div class='nameKylo'>Name</div>
+                                    <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsKylo'>1</div>
+                                    <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerKylo'>1</div>
+                                    <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackKylo'>1</div>
+                            </div>
+                        </div>
+                    </button>
+        
+                    <button class='char_button buttonVader'>
+                        <div class='card'>
+                            <div class='card_image'>
+                            <img src="assets/images/Vader.png" alt="Vader" class='character_imageVader'>
+                            </div>
+                            <div class='card_content'>
+                                    <div class="cardAttribute">Name:&nbsp;</div><div class='nameVader'>Name</div>
+                                    <div class="cardAttribute">Hit Points:&nbsp;</div><div class='hitpointsVader'>1</div>
+                                    <div class="cardAttribute">Attack:&nbsp;</div><div class='attackpowerVader'>1</div>
+                                    <div class="cardAttribute">Counter:&nbsp;</div><div class='counterattackVader'>1</div>
+                            </div>
+                        </div>
+                    </button>
+        </div>
+        <div class="col-md-2"></div>
+</div>
+
+<!-- Result Row -->
+<div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+        Result:    
+        </div>
+        <div class="col-md-2"></div>
+</div>
+
+
+<div class="character1">
+
+</div>
+
+<div class="character1attributes">
+    
+</div>
+
+        <script src="assets/javascript/game.js"></script>
+</body>
+</html>
