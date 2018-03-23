@@ -93,12 +93,12 @@ if(battleP1.hp <= 0){
     console.log("Game Over - Player",battleP1.name)
     $(".result_text").html("<h2>GAME OVER!</h2>")
     $("#attack").hide()
-        //do something in the attack
-        //take opponents hit points and reduced by player 1
-        //take player 1 hit points and reduce by oponents attack points
+    game1.lossCount = 1
+    $("#reset").show()
 
 
 }
+
 
     
     
@@ -107,8 +107,8 @@ if(battleP1.hp <= 0){
     // create my characters
 var character1 = new Character("Luke","assets/images/luke.png",100,6,5)
 var character2 = new Character("Chewy","assets/images/chewy.png",120,8,10)
-var character3 = new Character("Kylo","assets/images/kyloren.png",150,10,25)
-var character4 = new Character("Vader","assets/images/vader.png",180,12,35)
+var character3 = new Character("Kylo","assets/images/kyloren.png",150,10,15)
+var character4 = new Character("Vader","assets/images/vader.png",180,12,25)
 
 var game1 = new Game(0,"Luke","Vader",false,0,0)
 
@@ -126,7 +126,10 @@ function checkGameState(){
             $(".your_character_row").hide()   
             $(".opponent_row").hide()
             $(".defender_row").hide()
-            game1.gameState=1 // only this state automtically exits
+            $("#attack").hide()
+            $(".result").hide()
+            $("#reset").hide()
+            game1.gameState=1 
             break
 
             case 1:// gameState 1 character assigned
@@ -134,13 +137,36 @@ function checkGameState(){
             $(".your_character_row").show()
             $(".your_character_row").prepend("<h2>Your Character</h2>")   
             $(".opponent_row").show()
-            $(".opponent_row").prepend("<h2>Choose An Opponnent<h2>")
+            $(".opponent_row").prepend("<h2>Choose an Opponent<h2>")
             $(".defender_row").hide()
             switch(game1.player1){
                 case "Luke":
-                $(".buttonChewy").hide()
+                $(".buttonLuke").prop('disabled',true)
+                $(".your_character_row .buttonChewy").hide()
+                $(".your_character_row .buttonKylo").hide()
+                $(".your_character_row .buttonVader").hide()
+                $(".opponent_row .buttonLuke").hide()
                 break
-
+                case "Chewy":
+                $(".buttonChewy").prop('disabled',true)
+                $(".your_character_row .buttonLuke").hide()
+                $(".your_character_row .buttonKylo").hide()
+                $(".your_character_row .buttonVader").hide()
+                $(".opponent_row .buttonChewy").hide()
+                break
+                case "Kylo":
+                $(".buttonKylo").prop('disabled',true)
+                $(".your_character_row .buttonLuke").hide()
+                $(".your_character_row .buttonChewy").hide()
+                $(".your_character_row .buttonVader").hide()
+                $(".opponent_row .buttonKylo").hide()
+                break
+                case "Vader":
+                $(".buttonVader").prop('disabled',true)
+                $(".your_character_row .buttonLuke").hide()
+                $(".your_character_row .buttonChewy").hide()
+                $(".your_character_row .buttonKylo").hide()
+                $(".opponent_row .buttonVader").hide()
             }
             game1.gameState=2
             break
@@ -150,7 +176,38 @@ function checkGameState(){
             $(".your_character_row").show()   
             $(".opponent_row").show()
             $(".defender_row").show()
-            $(".buttonVader").show()     
+            $(".defender_row").prepend("<h2>Defender</h2>")
+            $(".buttonLuke").prop('disabled',true)
+            $(".buttonKylo").prop('disabled',true)
+            $(".buttonChewy").prop('disabled',true)
+            $(".buttonVader").prop('disabled',true)
+            switch(game1.opponent){
+                case "Luke":
+                $(".defender_row .buttonChewy").hide()
+                $(".defender_row .buttonKylo").hide()
+                $(".defender_row .buttonVader").hide()
+                $(".opponent_row .buttonLuke").hide()
+                break
+                case "Chewy":
+                $(".defender_row .buttonLuke").hide()
+                $(".defender_row .buttonKylo").hide()
+                $(".defender_row .buttonVader").hide()
+                $(".opponent_row .buttonChewy").hide()
+                break
+                case "Kylo":
+                $(".defender_row .buttonLuke").hide()
+                $(".defender_row .buttonChewy").hide()
+                $(".defender_row .buttonVader").hide()
+                $(".opponent_row .buttonKylo").hide()
+                break
+                case "Vader":
+                $(".defender_row .buttonLuke").hide()
+                $(".defender_row .buttonChewy").hide()
+                $(".defender_row .buttonKylo").hide()
+                $(".opponent_row .buttonVader").hide()
+            }
+            $("#attack").show()
+            game1.gameState=3 //gameState 3 player wins game over               
             break
 
         
@@ -217,7 +274,7 @@ $(".char_button").on("click", function(){
             game1.opponent = "Vader"
             break
         }
-        game1.gameState=3       
+        checkGameState()    
     }
 
 })
@@ -228,6 +285,8 @@ $("#attack").on("click", function() {
     battleMeBro(game1.player1,game1.opponent)
 })
 
-
+$("#reset").on("click", function(){
+    location.reload()
+})
   
 })

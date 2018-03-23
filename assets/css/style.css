@@ -196,3 +196,9 @@ float:left;
     float:left;
     text-align: left;
 }
+
+#reset{
+    float:left;
+    margin-left:20px;
+    margin-top:7px;
+}
