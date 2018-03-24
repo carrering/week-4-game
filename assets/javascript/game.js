@@ -97,12 +97,15 @@ if(battleP1.hp <= 0){
 }
 
 if(battleC.hp <= 0){
-    game1.winCount++
-    checkGameState()
+        $(".result_text").html("<h2>You Defeated " + battleC.name + "! On to the next round!")
+            game1.winCount++
+            checkGameState()
+        }
+ 
 }
     
     
-}
+
 
     // create my characters
 var character1 = new Character("Luke","assets/images/luke.png",100,6,5)
@@ -215,6 +218,7 @@ function checkGameState(){
             $(".opponent_row .buttonKylo").prop('disabled',false)
             $(".opponent_row .buttonChewy").prop('disabled',false)
             $(".opponent_row .buttonVader").prop('disabled',false)
+            console.log("game1.winCount:",game1.winCount)
             if(game1.winCount === 1){
                 console.log("wincount is 1")
                 switch(game1.opponent){
@@ -243,35 +247,94 @@ function checkGameState(){
                     $(".defender_row .buttonVader").hide()
                 }  
                 console.log(game1.winCount)
-                game1.winCount++
+                // game1.winCount++
                 console.log(game1.winCount)
             }
             else if(game1.winCount===2) {
-                console.log("checkmeout!")
+                console.log("i should move new player to defender row!")
+                console.log("new opponent:",game1.opponent)
                 switch(game1.opponent){
                     case "Luke":
-                    $(".defender_row .buttonChewy").hide()
-                    $(".defender_row .buttonKylo").hide()
-                    $(".defender_row .buttonVader").hide()
+                    $(".opponent_row .buttonLuke").hide()                   
                     $(".defender_row .buttonLuke").show()
                     break
                     case "Chewy":
-                    $(".defender_row .buttonLuke").hide()
-                    $(".defender_row .buttonKylo").hide()
-                    $(".defender_row .buttonVader").hide()
+                    $(".opponent_row .buttonChewy").hide()
                     $(".defender_row .buttonChewy").show()
                     break
                     case "Kylo":
-                    $(".defender_row .buttonLuke").hide()
-                    $(".defender_row .buttonChewy").hide()
-                    $(".defender_row .buttonVader").hide()
+                    $(".opponent_row .buttonKylo").hide()
                     $(".defender_row .buttonKylo").show()
                     break
                     case "Vader":
-                    $(".defender_row .buttonLuke").hide()
+                    $(".opponent_row .buttonVader").hide()
+                    $(".defender_row .buttonVader").show()
+                }  
+            }
+            else if(game1.winCount===2) {
+                console.log("i should move new player to defender row!")
+                console.log("new opponent:",game1.opponent)
+                switch(game1.opponent){
+                    case "Luke":
+                    $(".opponent_row .buttonLuke").hide()                   
+                    $(".defender_row .buttonLuke").show()
                     $(".defender_row .buttonChewy").hide()
                     $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").hide()                   
+                    break
+                    case "Chewy":
+                    $(".opponent_row .buttonChewy").hide()
+                    $(".defender_row .buttonChewy").show()                
+                    $(".defender_row .buttonLuke").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").hide()       
+                    break
+                    case "Kylo":
+                    $(".opponent_row .buttonKylo").hide()
+                    $(".defender_row .buttonKylo").show()
+                    $(".defender_row .buttonVader").hide()
+                    $(".defender_row .buttonLuke").hide()       
+                    $(".defender_row .buttonChewy").hide()                                                      
+                    break
+                    case "Vader":
+                    $(".opponent_row .buttonVader").hide()
                     $(".defender_row .buttonVader").show()
+                    $(".defender_row .buttonLuke").hide()       
+                    $(".defender_row .buttonChewy").hide()
+                    $(".defender_row .buttonKylo").hide()                     
+                }  
+            }
+            else if(game1.winCount===4) {
+                console.log("i should move new player to defender row!")
+                console.log("new opponent:",game1.opponent)
+                switch(game1.opponent){
+                    case "Luke":
+                    $(".opponent_row .buttonLuke").hide()                   
+                    $(".defender_row .buttonLuke").show()
+                    $(".defender_row .buttonChewy").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").hide()                   
+                    break
+                    case "Chewy":
+                    $(".opponent_row .buttonChewy").hide()
+                    $(".defender_row .buttonChewy").show()                
+                    $(".defender_row .buttonLuke").hide()
+                    $(".defender_row .buttonKylo").hide()
+                    $(".defender_row .buttonVader").hide()       
+                    break
+                    case "Kylo":
+                    $(".opponent_row .buttonKylo").hide()
+                    $(".defender_row .buttonKylo").show()
+                    $(".defender_row .buttonVader").hide()
+                    $(".defender_row .buttonLuke").hide()       
+                    $(".defender_row .buttonChewy").hide()                                                      
+                    break
+                    case "Vader":
+                    $(".opponent_row .buttonVader").hide()
+                    $(".defender_row .buttonVader").show()
+                    $(".defender_row .buttonLuke").hide()       
+                    $(".defender_row .buttonChewy").hide()
+                    $(".defender_row .buttonKylo").hide()                     
                 }  
             }
             game1.winCount++
@@ -341,6 +404,8 @@ $(".char_button").on("click", function(){
             game1.opponent = "Vader"
             break
         }
+        console.log("attackme opponent is now:",game1.opponent)
+        $(".result_text").html("")
         checkGameState()    
     }
 
